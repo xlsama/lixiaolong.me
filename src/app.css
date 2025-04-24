@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #f60;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
