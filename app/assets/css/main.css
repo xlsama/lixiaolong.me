@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "tw-animate-css";
+
+:root {
+  --ui-primary: black;
+}
+  
+.dark {
+  --ui-primary: white;
+}
