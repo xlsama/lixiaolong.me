@@ -17,7 +17,7 @@ const open = (url: string) => {
           <UIcon
             name="i-lucide-github"
             class="
-              size-5 text-black transition-all
+              size-5 transition-all
               hover:scale-110
               active:scale-95
             "
@@ -26,7 +26,7 @@ const open = (url: string) => {
           <UIcon
             name="i-custom-x"
             class="
-              size-4.5 text-black transition-all
+              size-4.5 transition-all
               hover:scale-110
               active:scale-95
             "
