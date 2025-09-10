@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
+    'motion-v/nuxt',
   ],
   imports: {
     presets: [{ from: 'dayjs', imports: [{ name: 'default', as: 'dayjs' }] }],
