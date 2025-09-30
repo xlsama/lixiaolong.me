@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   compatibilityDate: '2025-07-15',
   nitro: {
+    preset: 'netlify-edge',
     routeRules: {
       '/': { prerender: true },
     },
