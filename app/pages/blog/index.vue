@@ -21,16 +21,34 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
 </script>
 
 <template>
-  <UContainer class="my-14 space-y-10">
-    <header class="space-y-3">
-      <h1 class="text-3xl font-semibold text-gray-900">
+  <UContainer
+    class="
+      my-8 space-y-8
+      md:my-14 md:space-y-10
+    "
+  >
+    <header
+      class="
+        space-y-2
+        md:space-y-3
+      "
+    >
+      <h1
+        class="
+          text-2xl font-semibold text-gray-900
+          md:text-3xl
+        "
+      >
         所有文章
       </h1>
     </header>
 
     <div
       v-if="posts?.length"
-      class="space-y-6"
+      class="
+        space-y-4
+        md:space-y-6
+      "
     >
       <Motion
         v-for="(post, i) in posts"
@@ -59,38 +77,56 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
           >
             <article
               class="
-                rounded-2xl border border-gray-200 p-6 transition
+                rounded-2xl border border-gray-200 p-4 transition
                 will-change-transform
                 hover:border-gray-300 hover:bg-gray-50/60
+                md:p-6
               "
             >
               <div
                 class="
-                  flex flex-col gap-2
-                  md:flex-row md:items-center md:justify-between
+                  flex flex-col gap-1.5
+                  md:flex-row md:items-center md:justify-between md:gap-2
                 "
               >
                 <h2
                   class="
-                    text-xl font-semibold text-gray-900 transition-colors
+                    text-lg font-semibold text-gray-900 transition-colors
                     group-hover:text-gray-600
+                    md:text-xl
                   "
                 >
                   {{ post.title }}
                 </h2>
-                <span class="text-sm text-gray-400">
+                <span
+                  class="
+                    text-xs text-gray-400
+                    md:text-sm
+                  "
+                >
                   {{ formatDate(post.date) }}
                 </span>
               </div>
-              <p class="mt-2 text-sm text-gray-600">
+              <p
+                class="
+                  mt-1.5 text-xs text-gray-600
+                  md:mt-2 md:text-sm
+                "
+              >
                 {{ post.description }}
               </p>
-              <div class="mt-4 flex flex-wrap items-center gap-2">
+              <div
+                class="
+                  mt-3 flex flex-wrap items-center gap-1.5
+                  md:mt-4 md:gap-2
+                "
+              >
                 <UBadge
                   v-for="tag in post.tags || []"
                   :key="tag"
                   color="neutral"
                   variant="soft"
+                  class="text-xs"
                 >
                   #{{ tag }}
                 </UBadge>

@@ -21,34 +21,68 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
 </script>
 
 <template>
-  <UContainer class="my-14 space-y-14">
-    <section class="space-y-6">
+  <UContainer
+    class="
+      my-8 space-y-10
+      md:my-14 md:space-y-14
+    "
+  >
+    <section
+      class="
+        space-y-4
+        md:space-y-6
+      "
+    >
       <Motion
         :initial="{ y: 8, opacity: 0 }"
         :animate="{ y: 0, opacity: 1 }"
         :transition="{ duration: 0.3 }"
         as="div"
-        class="space-y-3"
+        class="
+          space-y-2
+          md:space-y-3
+        "
       >
-        <h1 class="max-w-2xl text-4xl leading-tight font-semibold text-gray-900">
+        <h1
+          class="
+            max-w-2xl text-3xl leading-tight font-semibold text-gray-900
+            md:text-4xl
+          "
+        >
           嗨，我是小龙
         </h1>
-        <p class="max-w-2xl text-lg text-gray-600">
+        <p
+          class="
+            max-w-2xl text-base text-gray-600
+            md:text-lg
+          "
+        >
           欢迎来到我的博客。
         </p>
       </Motion>
     </section>
 
-    <section class="space-y-6">
+    <section
+      class="
+        space-y-4
+        md:space-y-6
+      "
+    >
       <header class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-gray-900">
+        <h2
+          class="
+            text-xl font-semibold text-gray-900
+            md:text-2xl
+          "
+        >
           最新文章
         </h2>
         <NuxtLink
           to="/blog"
           class="
-            text-sm font-medium text-gray-500 underline-offset-4
+            text-xs font-medium text-gray-500 underline-offset-4
             hover:text-gray-900 hover:underline
+            md:text-sm
           "
         >
           所有文章
@@ -58,8 +92,8 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
       <div
         v-if="posts?.length"
         class="
-          grid gap-6
-          md:grid-cols-2
+          grid gap-4
+          md:grid-cols-2 md:gap-6
         "
       >
         <Motion
@@ -92,26 +126,43 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                   flex flex-col justify-between transition will-change-transform
                 "
               >
-                <div class="space-y-3">
+                <div
+                  class="
+                    space-y-2
+                    md:space-y-3
+                  "
+                >
                   <p class="text-xs tracking-wide text-gray-400 uppercase">
                     {{ formatDate(post.date) }}
                   </p>
                   <h3
                     class="
-                      text-xl leading-tight font-semibold text-gray-900
+                      text-lg leading-tight font-semibold text-gray-900
                       transition-colors
                       group-hover:text-gray-600
+                      md:text-xl
                     "
                   >
                     {{ post.title }}
                   </h3>
-                  <p class="text-sm text-gray-600">
+                  <p
+                    class="
+                      text-xs text-gray-600
+                      md:text-sm
+                    "
+                  >
                     {{ post.description }}
                   </p>
-                  <div class="flex flex-wrap gap-2">
+                  <div
+                    class="
+                      flex flex-wrap gap-1.5
+                      md:gap-2
+                    "
+                  >
                     <UBadge
                       v-for="tag in post.tags || []"
                       :key="tag"
+                      class="text-xs"
                     >
                       {{ tag }}
                     </UBadge>

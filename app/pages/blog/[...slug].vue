@@ -31,14 +31,23 @@ watch(article, (value) => {
 <template>
   <UContainer
     class="
-      my-14 flex flex-col gap-12
+      my-8 flex flex-col gap-8
+      md:my-14 md:gap-12
       lg:flex-row
     "
   >
-    <article class="min-w-0 flex-1 space-y-6">
+    <article
+      class="
+        min-w-0 flex-1 space-y-4
+        md:space-y-6
+      "
+    >
       <header
         v-if="article"
-        class="space-y-4"
+        class="
+          space-y-3
+          md:space-y-4
+        "
       >
         <Motion
           as="div"
@@ -49,8 +58,9 @@ watch(article, (value) => {
           <NuxtLink
             to="/blog"
             class="
-              text-sm text-gray-500 underline-offset-4
+              text-xs text-gray-500 underline-offset-4
               hover:text-gray-900 hover:underline
+              md:text-sm
             "
           >
             ← 返回文章列表
@@ -78,7 +88,10 @@ watch(article, (value) => {
         :in-view="{ opacity: 1 }"
         :in-view-options="{ once: true }"
         :transition="{ duration: 0.25 }"
-        class="space-y-4"
+        class="
+          space-y-3
+          md:space-y-4
+        "
       >
         <ContentRenderer :value="article" />
       </Motion>

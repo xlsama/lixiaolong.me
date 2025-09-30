@@ -8,12 +8,32 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
 </script>
 
 <template>
-  <UContainer class="my-14 space-y-6">
-    <header class="space-y-3">
-      <h1 class="text-3xl font-semibold text-gray-900">
+  <UContainer
+    class="
+      my-8 space-y-4
+      md:my-14 md:space-y-6
+    "
+  >
+    <header
+      class="
+        space-y-2
+        md:space-y-3
+      "
+    >
+      <h1
+        class="
+          text-2xl font-semibold text-gray-900
+          md:text-3xl
+        "
+      >
         我的工具与设备
       </h1>
-      <p class="max-w-2xl text-sm text-gray-600">
+      <p
+        class="
+          max-w-2xl text-xs text-gray-600
+          md:text-sm
+        "
+      >
         下方内容来自仓库
         <a
           href="https://github.com/xlsama/use"
@@ -36,7 +56,12 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
     >
       <UCard class="max-w-none transition will-change-transform">
         <template #header>
-          <div class="text-base text-gray-500">
+          <div
+            class="
+              text-sm text-gray-500
+              md:text-base
+            "
+          >
             README.md
           </div>
         </template>
@@ -46,7 +71,10 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
         />
         <p
           v-else
-          class="text-sm text-gray-500"
+          class="
+            text-xs text-gray-500
+            md:text-sm
+          "
         >
           正在加载 README...
         </p>
