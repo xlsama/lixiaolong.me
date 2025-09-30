@@ -1,8 +1,4 @@
 <script setup lang="ts">
-const { data: home } = await useAsyncData('home', () =>
-  queryCollection('home').first(),
-)
-
 const { data: posts } = await useAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
     .select('title', 'description', 'path', 'date', 'tags', 'readingTime', 'cover')
@@ -24,31 +20,13 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
 
 <template>
   <UContainer class="my-14 space-y-14">
-    <section
-      v-if="home"
-      class="space-y-6"
-    >
+    <section class="space-y-6">
       <h1 class="max-w-2xl text-4xl leading-tight font-semibold text-gray-900">
-        {{ home.title }}
+        嗨，我是小龙
       </h1>
-      <p
-        v-if="home.description"
-        class="max-w-2xl text-lg text-gray-600"
-      >
-        {{ home.description }}
+      <p class="max-w-2xl text-lg text-gray-600">
+        欢迎来到我的博客。
       </p>
-    </section>
-
-    <section>
-      <div class="space-y-4">
-        <ContentRenderer
-          v-if="home"
-          :value="home"
-        />
-        <div v-else>
-          Home not found
-        </div>
-      </div>
     </section>
 
     <section class="space-y-6">

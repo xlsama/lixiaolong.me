@@ -33,6 +33,7 @@
     "@nuxt/content": "^3.7.1",
     "@nuxt/eslint": "^1.9.0",
     "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "^24.6.0",
     "eslint": "^9.36.0",
     "eslint-plugin-better-tailwindcss": "^3.7.9",
     "eslint-plugin-oxlint": "^1.19.0",
@@ -44,24 +45,16 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22",
+      "version": "24",
       "onFail": "download"
     }
   },
   "engines": {
-    "node": "^22"
+    "node": "^24"
   },
   "pnpm": {
     "overrides": {
       "vite": "npm:rolldown-vite@latest"
-    },
-    "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "@tailwindcss/oxide",
-      "better-sqlite3",
-      "esbuild",
-      "unrs-resolver",
-      "vue-demi"
-    ]
+    }
   }
 }

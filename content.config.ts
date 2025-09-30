@@ -2,22 +2,15 @@ import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
-    home: defineCollection({
-      type: 'page',
-      source: 'index.md',
-      schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
-        hero: z.object({
-          title: z.string(),
-          subtitle: z.string().optional(),
-          cta: z.string().optional(),
-        }).optional(),
-      }),
-    }),
     blog: defineCollection({
       type: 'page',
-      source: 'blog/**/*.md',
+      // Pull blog posts from the external GitHub repository `xlsama/notes`
+      // See: https://content.nuxt.com/docs/collections/define#source
+      source: {
+        repository: 'https://github.com/xlsama/notes',
+        include: 'blog/**/*.md',
+        authToken: process.env.GITHUB_TOKEN,
+      },
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -29,6 +22,15 @@ export default defineContentConfig({
           alt: z.string().optional(),
         }).optional(),
       }),
+    }),
+    use: defineCollection({
+      type: 'page',
+      // Pull README.md from the external GitHub repository `xlsama/use`
+      source: {
+        repository: 'https://github.com/xlsama/use',
+        include: 'README.md',
+        authToken: process.env.GITHUB_TOKEN,
+      },
     }),
   },
 })
