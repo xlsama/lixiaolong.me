@@ -8,9 +8,6 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
 <template>
   <UContainer class="my-14 space-y-8">
     <header class="space-y-3">
-      <p class="text-sm tracking-widest text-gray-500 uppercase">
-        Use
-      </p>
       <h1 class="text-3xl font-semibold text-gray-900">
         我的工具与设备
       </h1>

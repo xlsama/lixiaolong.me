@@ -27,13 +27,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   nitro: {
-    preset: 'netlify-edge',
-    routeRules: {
-      '/': { prerender: true },
-      '/blog': { prerender: true },
-      '/blog/**': { prerender: true },
-      '/use': { prerender: true },
-    },
     prerender: {
       // Crawl links starting from entry pages to discover dynamic routes
       crawlLinks: true,

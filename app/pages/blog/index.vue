@@ -21,9 +21,6 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
 <template>
   <UContainer class="my-14 space-y-10">
     <header class="space-y-3">
-      <p class="text-sm tracking-widest text-gray-500 uppercase">
-        Blog
-      </p>
       <h1 class="text-3xl font-semibold text-gray-900">
         所有文章
       </h1>

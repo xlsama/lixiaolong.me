@@ -3,11 +3,10 @@ import { zh_cn } from '@nuxt/ui/locale'
 </script>
 
 <template>
-  <NuxtLayout>
-    <UApp :locale="zh_cn">
+  <UApp :locale="zh_cn">
+    <NuxtLayout>
       <AppHeader />
-    </UApp>
-
-    <NuxtPage />
-  </NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
