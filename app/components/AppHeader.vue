@@ -56,7 +56,7 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
 <template>
   <header
     class="
-      sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur
+      sticky top-0 z-50 bg-white/80 shadow-sm backdrop-blur
       supports-[backdrop-filter]:bg-white/70
       dark:border-gray-800 dark:bg-black/60
     "
@@ -118,16 +118,16 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
       <!-- Right: Nav buttons + social icons -->
       <div
         class="
-          flex items-center gap-1
-          md:gap-2
+          flex items-center gap-4
+          md:gap-5
         "
       >
         <!-- Navigation - hidden on mobile -->
         <div
           class="
-            hidden items-center gap-0.5
+            hidden items-center gap-2
             sm:flex
-            md:gap-1
+            md:gap-4
           "
         >
           <Motion
@@ -144,8 +144,9 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
               :variant="isActiveLink(link) ? 'solid' : 'ghost'"
               :color="isActiveLink(link) ? 'neutral' : 'neutral'"
               class="
-                w-[3rem] justify-center text-[0.6875rem] font-medium
-                md:w-[4.5rem] md:text-sm
+                w-[3.5rem] justify-center text-base font-medium
+                sm:text-sm
+                md:w-[5rem]
               "
               size="xs"
             >
@@ -157,8 +158,8 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
         <!-- Social icons -->
         <div
           class="
-            flex items-center gap-0.5
-            md:gap-1
+            flex items-center gap-2
+            md:gap-4
           "
         >
           <UTooltip
@@ -183,10 +184,7 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
               >
                 <UIcon
                   :name="item.icon"
-                  class="
-                    size-3
-                    md:size-4
-                  "
+                  class="size-4"
                 />
               </UButton>
             </Motion>
@@ -204,7 +202,7 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
     :ui="{ content: 'w-3/4 max-w-sm' }"
   >
     <template #body>
-      <nav class="space-y-2">
+      <nav class="space-y-2 p-4">
         <UButton
           v-for="link in navLinks"
           :key="link.to"
