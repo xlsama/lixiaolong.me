@@ -1,6 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -31,6 +30,15 @@ export default defineNuxtConfig({
     preset: 'netlify-edge',
     routeRules: {
       '/': { prerender: true },
+      '/blog': { prerender: true },
+      '/blog/**': { prerender: true },
+      '/use': { prerender: true },
+    },
+    prerender: {
+      // Crawl links starting from entry pages to discover dynamic routes
+      crawlLinks: true,
+      // Ignore non-page asset links that may appear in content
+      ignore: ['/Brewfile'],
     },
   },
   vite: {
