@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog')
-    .select('title', 'description', 'path', 'date', 'tags', 'readingTime')
+    .select('title', 'description', 'path', 'date', 'tags')
     .all()
 
   return items.sort((a, b) => {
@@ -69,12 +69,6 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
           >
             #{{ tag }}
           </UBadge>
-          <span
-            v-if="post.readingTime"
-            class="text-xs text-gray-400"
-          >
-            预计 {{ post.readingTime }} 分钟
-          </span>
         </div>
       </article>
     </div>

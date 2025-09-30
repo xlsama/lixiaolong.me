@@ -16,7 +16,6 @@ export default defineContentConfig({
         description: z.string().optional(),
         date: z.string().or(z.date()).optional(),
         tags: z.array(z.string()).default([]),
-        readingTime: z.number().optional(),
         cover: z.object({
           src: z.string(),
           alt: z.string().optional(),

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
-    .select('title', 'description', 'path', 'date', 'tags', 'readingTime', 'cover')
+    .select('title', 'description', 'path', 'date', 'tags', 'cover')
     .all()
 
   return items.sort((a, b) => {
@@ -82,13 +82,6 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
               </UBadge>
             </div>
           </div>
-
-          <p
-            v-if="post.readingTime"
-            class="mt-4 text-xs text-gray-400"
-          >
-            预计阅读 {{ post.readingTime }} 分钟
-          </p>
         </UCard>
       </div>
       <p
