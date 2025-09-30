@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+
 const { data: readme } = await useAsyncData('use-readme', async () => {
   const items = await queryCollection('use').all()
   return items[0] || null
@@ -25,22 +27,30 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
       </p>
     </header>
 
-    <UCard class="max-w-none">
-      <template #header>
-        <div class="text-base text-gray-500">
-          README.md
-        </div>
-      </template>
-      <ContentRenderer
-        v-if="readme"
-        :value="readme"
-      />
-      <p
-        v-else
-        class="text-sm text-gray-500"
-      >
-        正在加载 README...
-      </p>
-    </UCard>
+    <Motion
+      as-child
+      :initial="{ y: 12, opacity: 0 }"
+      :in-view="{ y: 0, opacity: 1 }"
+      :in-view-options="{ once: true }"
+      :transition="{ duration: 0.28 }"
+    >
+      <UCard class="max-w-none transition will-change-transform">
+        <template #header>
+          <div class="text-base text-gray-500">
+            README.md
+          </div>
+        </template>
+        <ContentRenderer
+          v-if="readme"
+          :value="readme"
+        />
+        <p
+          v-else
+          class="text-sm text-gray-500"
+        >
+          正在加载 README...
+        </p>
+      </UCard>
+    </Motion>
   </UContainer>
 </template>

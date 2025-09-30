@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+
 type NavLink = {
   label: string
   to: string
@@ -33,49 +35,89 @@ const isActiveLink = (link: NavLink) => (
 
 <template>
   <UHeader
-    title="Li Xiaolong"
     class="
       sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur
       supports-[backdrop-filter]:bg-white/70
       dark:border-gray-800 dark:bg-black/60
     "
   >
+    <!-- Left: Clickable site title -->
     <template #left>
-      <div class="flex items-center gap-1">
-        <UButton
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="link.to"
-          size="md"
-          :variant="isActiveLink(link) ? 'solid' : 'ghost'"
-          :color="isActiveLink(link) ? 'neutral' : 'neutral'"
-          class="font-medium"
+      <Motion
+        as-child
+        :while-hover="{ scale: 1.05 }"
+        :while-tap="{ scale: 0.95 }"
+        :while-press="{ scale: 0.95 }"
+        :transition="{ duration: 0.12 }"
+      >
+        <NuxtLink
+          to="/"
+          class="
+            text-base font-semibold tracking-wide text-gray-900
+            hover:text-gray-600
+            md:text-lg
+          "
+          aria-label="返回首页"
         >
-          {{ link.label }}
-        </UButton>
-      </div>
+          Li Xiaolong
+        </NuxtLink>
+      </Motion>
     </template>
+
+    <!-- Right: Nav buttons with equal width + social icons -->
     <template #right>
-      <div class="flex items-center gap-1">
-        <UTooltip
-          v-for="item in socialLinks"
-          :key="item.label"
-          :text="item.label"
-        >
-          <UButton
-            :to="item.href"
-            variant="ghost"
-            color="neutral"
-            size="md"
-            target="_blank"
-            rel="noopener"
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
+          <Motion
+            v-for="link in navLinks"
+            :key="link.to"
+            as-child
+            :while-hover="{ scale: 1.05 }"
+            :while-tap="{ scale: 0.95 }"
+            :while-press="{ scale: 0.95 }"
+            :transition="{ duration: 0.12 }"
           >
-            <UIcon
-              :name="item.icon"
-              class="size-4"
-            />
-          </UButton>
-        </UTooltip>
+            <UButton
+              :to="link.to"
+              size="md"
+              :variant="isActiveLink(link) ? 'solid' : 'ghost'"
+              :color="isActiveLink(link) ? 'neutral' : 'neutral'"
+              class="w-[4.5rem] justify-center font-medium"
+            >
+              {{ link.label }}
+            </UButton>
+          </Motion>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <UTooltip
+            v-for="item in socialLinks"
+            :key="item.label"
+            :text="item.label"
+          >
+            <Motion
+              as-child
+              :while-hover="{ scale: 1.05 }"
+              :while-tap="{ scale: 0.95 }"
+              :while-press="{ scale: 0.95 }"
+              :transition="{ duration: 0.12 }"
+            >
+              <UButton
+                :to="item.href"
+                variant="ghost"
+                color="neutral"
+                size="md"
+                target="_blank"
+                rel="noopener"
+              >
+                <UIcon
+                  :name="item.icon"
+                  class="size-4"
+                />
+              </UButton>
+            </Motion>
+          </UTooltip>
+        </div>
       </div>
     </template>
   </UHeader>

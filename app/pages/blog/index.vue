@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+
 const { data: posts } = await useAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog')
     .select('title', 'description', 'path', 'date', 'tags')
@@ -30,47 +32,73 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
       v-if="posts?.length"
       class="space-y-6"
     >
-      <article
-        v-for="post in posts"
+      <Motion
+        v-for="(post, i) in posts"
         :key="getEntryPath(post)"
-        class="
-          rounded-2xl border border-gray-200 p-6 transition
-          hover:border-gray-300 hover:bg-gray-50/60
-        "
+        as-child
+        :initial="{ y: 12, opacity: 0 }"
+        :in-view="{ y: 0, opacity: 1 }"
+        :in-view-options="{ once: true }"
+        :transition="{ duration: 0.3, delay: i * 0.03 }"
       >
-        <div
+        <NuxtLink
+          :to="getEntryPath(post)"
           class="
-            flex flex-col gap-2
-            md:flex-row md:items-center md:justify-between
+            group block rounded-2xl
+            focus-visible:ring-2 focus-visible:ring-gray-300
+            focus-visible:outline-none
           "
+          aria-label="查看文章"
         >
-          <NuxtLink
-            :to="getEntryPath(post)"
-            class="
-              text-xl font-semibold text-gray-900
-              hover:text-gray-600
-            "
+          <Motion
+            as-child
+            :while-hover="{ scale: 1.05 }"
+            :while-tap="{ scale: 0.95 }"
+            :while-press="{ scale: 0.95 }"
+            :transition="{ duration: 0.12 }"
           >
-            {{ post.title }}
-          </NuxtLink>
-          <span class="text-sm text-gray-400">
-            {{ formatDate(post.date) }}
-          </span>
-        </div>
-        <p class="mt-2 text-sm text-gray-600">
-          {{ post.description }}
-        </p>
-        <div class="mt-4 flex flex-wrap items-center gap-2">
-          <UBadge
-            v-for="tag in post.tags || []"
-            :key="tag"
-            color="neutral"
-            variant="soft"
-          >
-            #{{ tag }}
-          </UBadge>
-        </div>
-      </article>
+            <article
+              class="
+                rounded-2xl border border-gray-200 p-6 transition
+                will-change-transform
+                hover:border-gray-300 hover:bg-gray-50/60
+              "
+            >
+              <div
+                class="
+                  flex flex-col gap-2
+                  md:flex-row md:items-center md:justify-between
+                "
+              >
+                <h2
+                  class="
+                    text-xl font-semibold text-gray-900 transition-colors
+                    group-hover:text-gray-600
+                  "
+                >
+                  {{ post.title }}
+                </h2>
+                <span class="text-sm text-gray-400">
+                  {{ formatDate(post.date) }}
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-gray-600">
+                {{ post.description }}
+              </p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <UBadge
+                  v-for="tag in post.tags || []"
+                  :key="tag"
+                  color="neutral"
+                  variant="soft"
+                >
+                  #{{ tag }}
+                </UBadge>
+              </div>
+            </article>
+          </Motion>
+        </NuxtLink>
+      </Motion>
     </div>
 
     <p

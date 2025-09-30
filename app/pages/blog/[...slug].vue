@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+
 const route = useRoute()
 
 // Use the actual encoded route path to match content entry paths (handles %-encoded chars)
@@ -38,7 +40,12 @@ watch(article, (value) => {
         v-if="article"
         class="space-y-4"
       >
-        <div>
+        <Motion
+          as="div"
+          :initial="{ y: 8, opacity: 0 }"
+          :animate="{ y: 0, opacity: 1 }"
+          :transition="{ duration: 0.25 }"
+        >
           <NuxtLink
             to="/blog"
             class="
@@ -48,7 +55,7 @@ watch(article, (value) => {
           >
             ← 返回文章列表
           </NuxtLink>
-        </div>
+        </Motion>
         <!-- <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
           <span>
             {{ formatDate(article.date) }}
@@ -64,12 +71,17 @@ watch(article, (value) => {
         </div> -->
       </header>
 
-      <div
+      <Motion
         v-if="article"
+        as="div"
+        :initial="{ opacity: 0 }"
+        :in-view="{ opacity: 1 }"
+        :in-view-options="{ once: true }"
+        :transition="{ duration: 0.25 }"
         class="space-y-4"
       >
         <ContentRenderer :value="article" />
-      </div>
+      </Motion>
       <div v-else>
         <UCard>
           <template #header>
