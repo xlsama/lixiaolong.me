@@ -22,8 +22,8 @@ watch(article, (value) => {
   })
 }, { immediate: true })
 
-const formatDate = (value?: string | Date | null) =>
-  value ? dayjs(value).format('YYYY 年 MM 月 DD 日') : ''
+// const formatDate = (value?: string | Date | null) =>
+//   value ? dayjs(value).format('YYYY 年 MM 月 DD 日') : ''
 </script>
 
 <template>
@@ -33,29 +33,25 @@ const formatDate = (value?: string | Date | null) =>
       lg:flex-row
     "
   >
-    <article class="min-w-0 flex-1 space-y-8">
+    <article class="min-w-0 flex-1 space-y-6">
       <header
         v-if="article"
         class="space-y-4"
       >
-        <NuxtLink
-          to="/blog"
-          class="
-            text-sm text-gray-500 underline-offset-4
-            hover:text-gray-900 hover:underline
-          "
-        >
-          ← 返回文章列表
-        </NuxtLink>
-        <h1 class="text-3xl leading-snug font-semibold text-gray-900">
-          {{ article.title }}
-        </h1>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+        <div>
+          <NuxtLink
+            to="/blog"
+            class="
+              text-sm text-gray-500 underline-offset-4
+              hover:text-gray-900 hover:underline
+            "
+          >
+            ← 返回文章列表
+          </NuxtLink>
+        </div>
+        <!-- <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
           <span>
             {{ formatDate(article.date) }}
-          </span>
-          <span v-if="article.readingTime">
-            · 预计 {{ article.readingTime }} 分钟
           </span>
         </div>
         <div class="flex flex-wrap gap-2">
@@ -65,7 +61,7 @@ const formatDate = (value?: string | Date | null) =>
           >
             #{{ tag }}
           </UBadge>
-        </div>
+        </div> -->
       </header>
 
       <div

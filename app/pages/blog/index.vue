@@ -24,9 +24,6 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
       <h1 class="text-3xl font-semibold text-gray-900">
         所有文章
       </h1>
-      <p class="max-w-2xl text-gray-600">
-        按时间排序的文章列表，涵盖前端开发、效率提升以及个人随笔。
-      </p>
     </header>
 
     <div

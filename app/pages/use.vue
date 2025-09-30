@@ -6,7 +6,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
 </script>
 
 <template>
-  <UContainer class="my-14 space-y-8">
+  <UContainer class="my-14 space-y-6">
     <header class="space-y-3">
       <h1 class="text-3xl font-semibold text-gray-900">
         我的工具与设备
