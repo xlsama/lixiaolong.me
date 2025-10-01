@@ -36,7 +36,7 @@ const { data: posts } = await useAsyncData('blog-posts', async () => {
         <Motion
           as-child
           :while-hover="{ scale: 1.05 }"
-          :while-tap="{ scale: 0.95 }"
+          :while-tap="{ scale: 0.9 }"
           :while-press="{ scale: 0.95 }"
           :transition="{ duration: 0.12 }"
         >

@@ -49,7 +49,7 @@ const formatDate = (value?: string | Date | null) =>
     >
       <Motion
         as-child
-        :while-tap="{ scale: 0.95 }"
+        :while-tap="{ scale: 0.9 }"
         :while-press="{ scale: 0.95 }"
         :transition="{ duration: 0.12 }"
       >
