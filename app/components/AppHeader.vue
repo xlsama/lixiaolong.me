@@ -201,7 +201,11 @@ const { direction, lengthX, coordsStart } = useSwipe(swipeTarget, {
     v-model:open="isMenuOpen"
     side="left"
     title="Li Xiaolong"
-    :ui="{ content: 'w-3/4 max-w-sm' }"
+    :ui="{
+      content: 'w-3/4 max-w-sm',
+      wrapper: 'h-[100dvh]',
+      body: 'pb-safe',
+    }"
   >
     <template #body>
       <nav class="space-y-2">
