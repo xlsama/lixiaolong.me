@@ -7,9 +7,9 @@ import { Motion } from 'motion-v'
   <UApp :locale="zh_cn">
     <NuxtLayout>
       <Motion
-        :initial="{ y: -8, opacity: 0 }"
-        :animate="{ y: 0, opacity: 1 }"
-        :transition="{ duration: 0.25 }"
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :transition="{ duration: 0.12 }"
         as-child
       >
         <AppHeader />

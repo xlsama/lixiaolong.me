@@ -37,8 +37,13 @@ const closeMenu = () => {
   isMenuOpen.value = false
 }
 
-// Touch gesture support with VueUse
-const { direction, lengthX, coordsStart } = useSwipe(document, {
+// Touch gesture support with VueUse (client-side only)
+const swipeTarget = ref<EventTarget>()
+onMounted(() => {
+  swipeTarget.value = document
+})
+
+const { direction, lengthX, coordsStart } = useSwipe(swipeTarget, {
   passive: true,
   onSwipe() {
     // Swipe from left edge (< 50px) to right with at least 50px movement
@@ -107,6 +112,7 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
               font-semibold tracking-wide text-gray-900
               hover:text-gray-600
               md:text-lg
+              dark:text-white dark:hover:text-gray-300
             "
             aria-label="返回首页"
           >
@@ -146,9 +152,7 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
               class="
                 w-[3.5rem] justify-center text-base font-medium
                 sm:text-sm
-                md:w-[5rem]
               "
-              size="xs"
             >
               {{ link.label }}
             </UButton>
@@ -178,15 +182,13 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
                 :to="item.href"
                 variant="ghost"
                 color="neutral"
-                size="xs"
                 target="_blank"
                 rel="noopener"
-              >
-                <UIcon
-                  :name="item.icon"
-                  class="size-4"
-                />
-              </UButton>
+                :icon="item.icon"
+                :ui="{
+                  leadingIcon: item.label === 'X' ? 'size-4' : 'size-5',
+                }"
+              />
             </Motion>
           </UTooltip>
         </div>
@@ -202,14 +204,13 @@ const { direction, lengthX, coordsStart } = useSwipe(document, {
     :ui="{ content: 'w-3/4 max-w-sm' }"
   >
     <template #body>
-      <nav class="space-y-2 p-4">
+      <nav class="space-y-2">
         <UButton
           v-for="link in navLinks"
           :key="link.to"
           :to="link.to"
-          :variant="isActiveLink(link) ? 'solid' : 'soft'"
-          :color="isActiveLink(link) ? 'neutral' : 'neutral'"
-          size="lg"
+          :variant="isActiveLink(link) ? 'solid' : 'link'"
+          size="xl"
           block
           class="w-full justify-start text-left"
           @click="closeMenu"

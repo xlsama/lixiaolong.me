@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
+import { Motion, motion } from 'motion-v'
 
 const { data: posts } = await useAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
-    .select('title', 'description', 'path', 'date', 'tags', 'cover')
     .all()
 
-  return items.sort((a, b) => {
-    const aTime = a.date ? dayjs(a.date).valueOf() : 0
-    const bTime = b.date ? dayjs(b.date).valueOf() : 0
-    return bTime - aTime
-  })
+  return items
+    .sort((a, b) => {
+      const aTime = a.date ? dayjs(a.date).valueOf() : 0
+      const bTime = b.date ? dayjs(b.date).valueOf() : 0
+      return bTime - aTime
+    })
+    .slice(0, 2) // 只显示最新的 2 篇文章
 })
 
 const formatDate = (value?: string | Date | null) =>
   value ? dayjs(value).format('YYYY 年 MM 月 DD 日') : ''
-
-const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | null) =>
-  entry?.path ?? entry?._path ?? ''
 </script>
 
 <template>
@@ -33,11 +31,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
         md:space-y-6
       "
     >
-      <Motion
-        :initial="{ y: 8, opacity: 0 }"
-        :animate="{ y: 0, opacity: 1 }"
-        :transition="{ duration: 0.3 }"
-        as="div"
+      <div
         class="
           space-y-2
           md:space-y-3
@@ -47,6 +41,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
           class="
             max-w-2xl text-3xl leading-tight font-semibold text-gray-900
             md:text-4xl
+            dark:text-white
           "
         >
           嗨，我是小龙
@@ -55,11 +50,12 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
           class="
             max-w-2xl text-base text-gray-600
             md:text-lg
+            dark:text-gray-300
           "
         >
           欢迎来到我的博客。
         </p>
-      </Motion>
+      </div>
     </section>
 
     <section
@@ -73,24 +69,37 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
           class="
             text-xl font-semibold text-gray-900
             md:text-2xl
+            dark:text-white
           "
         >
           最新文章
         </h2>
-        <NuxtLink
-          to="/blog"
-          class="
-            text-xs font-medium text-gray-500 underline-offset-4
-            hover:text-gray-900 hover:underline
-            md:text-sm
-          "
+        <Motion
+          as-child
+          :while-hover="{ scale: 1.05 }"
+          :while-tap="{ scale: 0.95 }"
+          :while-press="{ scale: 0.95 }"
+          :transition="{ duration: 0.12 }"
         >
-          所有文章
-        </NuxtLink>
+          <NuxtLink
+            to="/blog"
+            class="
+              text-xs font-medium text-gray-500 underline-offset-4
+              hover:text-gray-900 hover:underline
+              md:text-sm
+              dark:text-gray-400 dark:hover:text-white
+            "
+          >
+            所有文章
+          </NuxtLink>
+        </Motion>
       </header>
 
-      <div
+      <motion.div
         v-if="posts?.length"
+        :initial="{ opacity: 0, y: 10 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.12, delay: 0.2 }"
         class="
           grid gap-4
           md:grid-cols-2 md:gap-6
@@ -98,19 +107,20 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
       >
         <Motion
           v-for="(post, i) in posts"
-          :key="getEntryPath(post)"
+          :key="useContentPath(post)"
           as-child
-          :initial="{ y: 10, opacity: 0 }"
+          :initial="{ y: 10, opacity: 0 } "
           :in-view="{ y: 0, opacity: 1 }"
           :in-view-options="{ once: true }"
-          :transition="{ duration: 0.28, delay: i * 0.04 }"
+          :transition="{ duration: 0.2, delay: (i * 0.06) + 0.2 }"
         >
           <NuxtLink
-            :to="getEntryPath(post)"
+            :to="useContentPath(post)"
             class="
               group block rounded-2xl
               focus-visible:ring-2 focus-visible:ring-gray-300
               focus-visible:outline-none
+              dark:focus-visible:ring-gray-700
             "
             aria-label="查看文章"
           >
@@ -132,7 +142,12 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                     md:space-y-3
                   "
                 >
-                  <p class="text-xs tracking-wide text-gray-400 uppercase">
+                  <p
+                    class="
+                      text-xs tracking-wide text-gray-400 uppercase
+                      dark:text-gray-500
+                    "
+                  >
                     {{ formatDate(post.date) }}
                   </p>
                   <h3
@@ -141,6 +156,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                       transition-colors
                       group-hover:text-gray-600
                       md:text-xl
+                      dark:text-white dark:group-hover:text-gray-300
                     "
                   >
                     {{ post.title }}
@@ -149,6 +165,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                     class="
                       text-xs text-gray-600
                       md:text-sm
+                      dark:text-gray-400
                     "
                   >
                     {{ post.description }}
@@ -172,10 +189,13 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
             </Motion>
           </NuxtLink>
         </Motion>
-      </div>
+      </motion.div>
       <p
         v-else
-        class="text-sm text-gray-500"
+        class="
+          text-sm text-gray-500
+          dark:text-gray-400
+        "
       >
         文章准备中，敬请期待。
       </p>

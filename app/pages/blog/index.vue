@@ -3,7 +3,6 @@ import { Motion } from 'motion-v'
 
 const { data: posts } = await useAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog')
-    .select('title', 'description', 'path', 'date', 'tags')
     .all()
 
   return items.sort((a, b) => {
@@ -15,9 +14,6 @@ const { data: posts } = await useAsyncData('blog-posts', async () => {
 
 const formatDate = (value?: string | Date | null) =>
   value ? dayjs(value).format('YYYY 年 MM 月 DD 日') : ''
-
-const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | null) =>
-  entry?.path ?? entry?._path ?? ''
 </script>
 
 <template>
@@ -37,9 +33,24 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
         class="
           text-2xl font-semibold text-gray-900
           md:text-3xl
+          dark:text-white
         "
       >
-        所有文章
+        <Motion
+          as-child
+          :while-hover="{ scale: 1.05 }"
+          :while-tap="{ scale: 0.95 }"
+          :while-press="{ scale: 0.95 }"
+          :transition="{ duration: 0.12 }"
+        >
+          <UButton
+            variant="ghost"
+            color="neutral"
+            to="/"
+            icon="i-lucide-arrow-left"
+          />
+          所有文章
+        </Motion>
       </h1>
     </header>
 
@@ -52,7 +63,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
     >
       <Motion
         v-for="(post, i) in posts"
-        :key="getEntryPath(post)"
+        :key="useContentPath(post)"
         as-child
         :initial="{ y: 12, opacity: 0 }"
         :in-view="{ y: 0, opacity: 1 }"
@@ -60,11 +71,12 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
         :transition="{ duration: 0.3, delay: i * 0.03 }"
       >
         <NuxtLink
-          :to="getEntryPath(post)"
+          :to="useContentPath(post)"
           class="
             group block rounded-2xl
             focus-visible:ring-2 focus-visible:ring-gray-300
             focus-visible:outline-none
+            dark:focus-visible:ring-gray-700
           "
           aria-label="查看文章"
         >
@@ -81,6 +93,8 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                 will-change-transform
                 hover:border-gray-300 hover:bg-gray-50/60
                 md:p-6
+                dark:border-gray-800 dark:hover:border-gray-700
+                dark:hover:bg-gray-900/40
               "
             >
               <div
@@ -94,6 +108,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                     text-lg font-semibold text-gray-900 transition-colors
                     group-hover:text-gray-600
                     md:text-xl
+                    dark:text-white dark:group-hover:text-gray-300
                   "
                 >
                   {{ post.title }}
@@ -102,6 +117,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                   class="
                     text-xs text-gray-400
                     md:text-sm
+                    dark:text-gray-500
                   "
                 >
                   {{ formatDate(post.date) }}
@@ -111,6 +127,7 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
                 class="
                   mt-1.5 text-xs text-gray-600
                   md:mt-2 md:text-sm
+                  dark:text-gray-400
                 "
               >
                 {{ post.description }}
@@ -139,7 +156,10 @@ const getEntryPath = (entry?: { path?: string | null, _path?: string | null } | 
 
     <p
       v-else
-      class="text-sm text-gray-500"
+      class="
+        text-sm text-gray-500
+        dark:text-gray-400
+      "
     >
       暂时还没有文章，敬请期待。
     </p>

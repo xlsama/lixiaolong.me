@@ -24,14 +24,30 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
         class="
           text-2xl font-semibold text-gray-900
           md:text-3xl
+          dark:text-white
         "
       >
-        我的工具与设备
+        <Motion
+          as-child
+          :while-hover="{ scale: 1.05 }"
+          :while-tap="{ scale: 0.95 }"
+          :while-press="{ scale: 0.95 }"
+          :transition="{ duration: 0.12 }"
+        >
+          <UButton
+            variant="ghost"
+            color="neutral"
+            to="/"
+            icon="i-lucide-arrow-left"
+          />
+        </Motion>
+        I am using.
       </h1>
       <p
         class="
           max-w-2xl text-xs text-gray-600
           md:text-sm
+          dark:text-gray-400
         "
       >
         下方内容来自仓库
@@ -60,6 +76,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
             class="
               text-sm text-gray-500
               md:text-base
+              dark:text-gray-400
             "
           >
             README.md
@@ -74,6 +91,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
           class="
             text-xs text-gray-500
             md:text-sm
+            dark:text-gray-400
           "
         >
           正在加载 README...
