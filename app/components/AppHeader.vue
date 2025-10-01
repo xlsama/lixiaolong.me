@@ -183,8 +183,7 @@ const closeMenu = () => {
     title="Li Xiaolong"
     :ui="{
       content: 'w-3/4 max-w-sm',
-      wrapper: 'h-[100dvh]',
-      body: 'pb-safe',
+      overlay: 'h-dvh',
     }"
   >
     <template #body>
