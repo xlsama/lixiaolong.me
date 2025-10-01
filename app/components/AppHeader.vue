@@ -36,26 +36,6 @@ const isActiveLink = (link: NavLink) => (
 const closeMenu = () => {
   isMenuOpen.value = false
 }
-
-// Touch gesture support with VueUse (client-side only)
-const swipeTarget = ref<EventTarget>()
-onMounted(() => {
-  swipeTarget.value = document
-})
-
-const { direction, lengthX, coordsStart } = useSwipe(swipeTarget, {
-  passive: true,
-  onSwipe() {
-    // Swipe from left edge (< 50px) to right with at least 50px movement
-    if (
-      direction.value === 'right'
-      && coordsStart.x < 50
-      && lengthX.value > 50
-    ) {
-      isMenuOpen.value = true
-    }
-  },
-})
 </script>
 
 <template>
