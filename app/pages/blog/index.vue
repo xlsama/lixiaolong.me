@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+
 const { data: posts } = await useAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog')
     .all()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
+import { Motion, motion } from 'motion-v'
 
 const { data: posts } = await useAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
@@ -19,7 +19,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
   <UContainer
     class="
       my-8 space-y-10
-      md:my-14 md:space-y-30
+      md:my-14 md:space-y-20
     "
   >
     <section
