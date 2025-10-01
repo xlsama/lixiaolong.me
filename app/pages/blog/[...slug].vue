@@ -23,6 +23,10 @@ const { data: article } = await useAsyncData(`blog-article:${articlePath.value}`
   }
 
   if (!entry) {
+    // 在预渲染过程中，如果文章不存在，返回 null 而不是抛出错误
+    if (import.meta.prerender) {
+      return null
+    }
     throw createError({ statusCode: 404, statusMessage: '文章不存在' })
   }
 

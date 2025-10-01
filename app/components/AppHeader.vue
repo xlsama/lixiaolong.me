@@ -59,7 +59,7 @@ const closeMenu = () => {
         <Motion
           as-child
           :while-hover="{ scale: 1.05 }"
-          :while-tap="{ scale: 0.9 }"
+          :while-tap="{ scale: 0.8 }"
           :while-press="{ scale: 0.95 }"
           :transition="{ duration: 0.12 }"
         >
@@ -82,7 +82,7 @@ const closeMenu = () => {
         <Motion
           as-child
           :while-hover="{ scale: 1.05 }"
-          :while-tap="{ scale: 0.9 }"
+          :while-tap="{ scale: 0.8 }"
           :while-press="{ scale: 0.95 }"
           :transition="{ duration: 0.12 }"
         >
@@ -121,7 +121,7 @@ const closeMenu = () => {
             :key="link.to"
             as-child
             :while-hover="{ scale: 1.05 }"
-            :while-tap="{ scale: 0.9 }"
+            :while-tap="{ scale: 0.8 }"
             :while-press="{ scale: 0.95 }"
             :transition="{ duration: 0.12 }"
           >
@@ -154,7 +154,7 @@ const closeMenu = () => {
             <Motion
               as-child
               :while-hover="{ scale: 1.05 }"
-              :while-tap="{ scale: 0.9 }"
+              :while-tap="{ scale: 0.8 }"
               :while-press="{ scale: 0.95 }"
               :transition="{ duration: 0.12 }"
             >

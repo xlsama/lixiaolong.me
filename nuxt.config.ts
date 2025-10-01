@@ -32,6 +32,8 @@ export default defineNuxtConfig({
       crawlLinks: true,
       // Ignore non-page asset links that may appear in content
       ignore: ['/Brewfile'],
+      // 添加错误处理，避免预渲染失败
+      failOnError: false,
     },
   },
   vite: {
