@@ -131,5 +131,21 @@ watch(article, (value) => {
         </UCard>
       </div>
     </article>
+
+    <!-- 目录（仅在大屏显示） -->
+    <aside
+      v-if="article?.body?.toc?.links?.length"
+      class="
+        hidden
+        lg:block lg:w-64 lg:shrink-0
+      "
+    >
+      <UContentToc
+        :links="article.body.toc.links"
+        title="目录"
+        highlight
+        class="lg:sticky lg:top-24"
+      />
+    </aside>
   </UContainer>
 </template>
