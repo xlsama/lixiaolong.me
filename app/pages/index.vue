@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Motion, motion } from 'motion-v'
+import { motion } from 'motion-v'
 
 const { data: posts } = await useAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
@@ -13,16 +13,13 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
     })
     .slice(0, 2) // 只显示最新的 2 篇文章
 })
-
-const formatDate = (value?: string | Date | null) =>
-  value ? dayjs(value).format('YYYY 年 MM 月 DD 日') : ''
 </script>
 
 <template>
   <UContainer
     class="
       my-8 space-y-10
-      md:my-14 md:space-y-14
+      md:my-14 md:space-y-30
     "
   >
     <section
@@ -105,90 +102,13 @@ const formatDate = (value?: string | Date | null) =>
           md:grid-cols-2 md:gap-6
         "
       >
-        <Motion
+        <BlogPostCard
           v-for="(post, i) in posts"
           :key="useContentPath(post)"
-          as-child
-          :initial="{ y: 10, opacity: 0 } "
-          :in-view="{ y: 0, opacity: 1 }"
-          :in-view-options="{ once: true }"
-          :transition="{ duration: 0.2, delay: (i * 0.06) + 0.2 }"
-        >
-          <NuxtLink
-            :to="useContentPath(post)"
-            class="
-              group block rounded-2xl
-              focus-visible:ring-2 focus-visible:ring-gray-300
-              focus-visible:outline-none
-              dark:focus-visible:ring-gray-700
-            "
-            aria-label="查看文章"
-          >
-            <Motion
-              as-child
-              :while-hover="{ scale: 1.05 }"
-              :while-tap="{ scale: 0.95 }"
-              :while-press="{ scale: 0.95 }"
-              :transition="{ duration: 0.12 }"
-            >
-              <UCard
-                class="
-                  flex flex-col justify-between transition will-change-transform
-                "
-              >
-                <div
-                  class="
-                    space-y-2
-                    md:space-y-3
-                  "
-                >
-                  <p
-                    class="
-                      text-xs tracking-wide text-gray-400 uppercase
-                      dark:text-gray-500
-                    "
-                  >
-                    {{ formatDate(post.date) }}
-                  </p>
-                  <h3
-                    class="
-                      text-lg leading-tight font-semibold text-gray-900
-                      transition-colors
-                      group-hover:text-gray-600
-                      md:text-xl
-                      dark:text-white dark:group-hover:text-gray-300
-                    "
-                  >
-                    {{ post.title }}
-                  </h3>
-                  <p
-                    class="
-                      text-xs text-gray-600
-                      md:text-sm
-                      dark:text-gray-400
-                    "
-                  >
-                    {{ post.description }}
-                  </p>
-                  <div
-                    class="
-                      flex flex-wrap gap-1.5
-                      md:gap-2
-                    "
-                  >
-                    <UBadge
-                      v-for="tag in post.tags || []"
-                      :key="tag"
-                      class="text-xs"
-                    >
-                      {{ tag }}
-                    </UBadge>
-                  </div>
-                </div>
-              </UCard>
-            </Motion>
-          </NuxtLink>
-        </Motion>
+          :post="post"
+          :index="i"
+          variant="grid"
+        />
       </motion.div>
       <p
         v-else
