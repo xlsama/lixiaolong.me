@@ -182,7 +182,7 @@ const closeMenu = () => {
     side="left"
     title="Li Xiaolong"
     :ui="{
-      content: 'w-[85%] max-w-sm',
+      content: 'w-4/5 max-w-sm',
       overlay: 'h-dvh',
     }"
   >
