@@ -15,6 +15,7 @@ import { Motion } from 'motion-v'
         <AppHeader />
       </Motion>
       <NuxtPage />
+      <BackToTop />
     </NuxtLayout>
   </UApp>
 </template>

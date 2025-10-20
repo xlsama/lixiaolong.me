@@ -11,7 +11,7 @@ const route = useRoute()
 const isMenuOpen = ref(false)
 
 const navLinks: NavLink[] = [
-  { label: 'Home', to: '/', exact: true },
+  { label: '~/', to: '/', exact: true },
   { label: 'Blog', to: '/blog' },
   { label: 'Use', to: '/use' },
 ]
