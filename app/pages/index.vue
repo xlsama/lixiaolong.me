@@ -36,7 +36,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
       >
         <h1
           class="
-            max-w-2xl text-3xl leading-tight font-semibold text-gray-900
+            max-w-2xl text-3xl leading-tight font-medium text-gray-900
             md:text-4xl
             dark:text-white
           "
@@ -64,7 +64,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
       <header class="flex items-center justify-between">
         <h2
           class="
-            text-xl font-semibold text-gray-900
+            text-xl font-medium text-gray-900
             md:text-2xl
             dark:text-white
           "
