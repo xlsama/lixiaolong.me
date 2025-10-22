@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@nuxt/fonts',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
@@ -43,6 +44,11 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
+  },
+  fonts: {
+    families: [
+      { name: 'Inter', weights: [400] },
+    ],
   },
   icon: {
     customCollections: [{

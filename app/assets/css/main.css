@@ -3,6 +3,7 @@
 
 :root {
   --ui-primary: black;
+  font-family: 'Inter', ui-sans-serif, system-ui;
   text-autospace: normal;
 }
 
