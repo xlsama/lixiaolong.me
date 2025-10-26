@@ -3,7 +3,8 @@
 
 :root {
   --ui-primary: black;
-  font-family: 'Inter', ui-sans-serif, system-ui;
+  --ui-radius: 0.5rem;
+  font-family: "Inter", ui-sans-serif, system-ui;
   text-autospace: normal;
 }
 
@@ -147,6 +148,7 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-html,body {
+html,
+body {
   overflow-x: clip;
 }

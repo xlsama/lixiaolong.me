@@ -29,9 +29,8 @@ const socialLinks = [
   },
 ]
 
-const isActiveLink = (link: NavLink) => (
+const isActiveLink = (link: NavLink) =>
   link.exact ? route.path === link.to : route.path.startsWith(link.to)
-)
 
 const closeMenu = () => {
   isMenuOpen.value = false

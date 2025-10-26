@@ -34,7 +34,7 @@ const formatDate = (value?: string | Date | null) =>
     :in-view-options="{ once: true }"
     :transition="{
       duration: variant === 'grid' ? 0.2 : 0.3,
-      delay: variant === 'grid' ? (index * 0.06) + 0.2 : index * 0.03,
+      delay: variant === 'grid' ? index * 0.06 + 0.2 : index * 0.03,
     }"
   >
     <NuxtLink
@@ -117,7 +117,7 @@ const formatDate = (value?: string | Date | null) =>
         <article
           v-else
           class="
-            max-h-[200px] min-h-[140px] rounded-2xl border border-gray-200 p-4
+            max-h-[200px] min-h-[140px] rounded-xl border border-gray-200 p-4
             transition will-change-transform
             hover:border-gray-300 hover:bg-gray-50/60
             md:max-h-[220px] md:min-h-[160px] md:p-6

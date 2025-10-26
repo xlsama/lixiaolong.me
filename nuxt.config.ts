@@ -45,14 +45,14 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    families: [
-      { name: 'Inter', weights: [400] },
-    ],
+    families: [{ name: 'Inter', weights: [400] }],
   },
   icon: {
-    customCollections: [{
-      prefix: 'custom',
-      dir: './app/assets/img',
-    }],
+    customCollections: [
+      {
+        prefix: 'custom',
+        dir: './app/assets/img',
+      },
+    ],
   },
 })
