@@ -65,16 +65,11 @@ const closeMenu = () => {
           <UButton
             variant="ghost"
             color="neutral"
-            size="xs"
             class="sm:hidden"
             aria-label="打开菜单"
+            icon="i-lucide-menu"
             @click="isMenuOpen = true"
-          >
-            <UIcon
-              name="i-lucide-menu"
-              class="size-5"
-            />
-          </UButton>
+          />
         </Motion>
 
         <!-- Site title -->
@@ -194,7 +189,7 @@ const closeMenu = () => {
           :variant="isActiveLink(link) ? 'solid' : 'link'"
           size="xl"
           block
-          class="w-full justify-start text-left"
+          class="w-full justify-start px-5 py-2.5 text-left"
           @click="closeMenu"
         >
           {{ link.label }}

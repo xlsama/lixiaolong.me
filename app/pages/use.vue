@@ -57,7 +57,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
             dark:text-gray-400
           "
         >
-          下方内容来自仓库
+          下方内容来自仓库:
           <a
             href="https://github.com/xlsama/use"
             target="_blank"
@@ -66,7 +66,6 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
           >
             xlsama/use
           </a>
-          的 README.md。
         </p>
       </header>
 
