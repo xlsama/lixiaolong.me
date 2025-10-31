@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Motion, motion } from 'motion-v'
 
-const { data: posts } = await useAsyncData('recent-posts', async () => {
+const {
+  data: posts,
+  status: postsStatus,
+  error: postsError,
+} = await useLazyAsyncData('recent-posts', async () => {
   const items = await queryCollection('blog')
     .all()
 
@@ -93,7 +97,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
       </header>
 
       <motion.div
-        v-if="posts?.length"
+        v-if="postsStatus === 'success' && posts?.length"
         :initial="{ opacity: 0, y: 10 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.08, delay: 0.2 }"
@@ -110,6 +114,32 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
           variant="grid"
         />
       </motion.div>
+      <div
+        v-else-if="postsStatus === 'pending'"
+        class="
+          grid gap-4
+          md:grid-cols-2 md:gap-6
+        "
+      >
+        <div
+          v-for="i in 2"
+          :key="i"
+          class="
+            h-36 rounded-3xl border border-gray-200/20 bg-gray-100/60
+            animate-pulse
+            dark:border-gray-700/40 dark:bg-gray-800/40
+          "
+        />
+      </div>
+      <p
+        v-else-if="postsError"
+        class="
+          text-sm text-red-500
+          dark:text-red-400
+        "
+      >
+        文章加载失败，请稍后重试。
+      </p>
       <p
         v-else
         class="

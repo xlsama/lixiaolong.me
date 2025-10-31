@@ -5,6 +5,7 @@ import { Motion } from 'motion-v'
 
 <template>
   <UApp :locale="zh_cn">
+    <NuxtLoadingIndicator color="hsl(210, 100%, 70%)" :height="2" />
     <NuxtLayout>
       <Motion
         :initial="{ opacity: 0 }"

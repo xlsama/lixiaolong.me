@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 
-const { data: readme } = await useAsyncData('use-readme', async () => {
+const {
+  data: readme,
+  status: readmeStatus,
+  error: readmeError,
+} = await useLazyAsyncData('use-readme', async () => {
   const items = await queryCollection('use').all()
   return items[0] || null
 })
@@ -93,7 +97,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
             :value="readme"
           />
           <p
-            v-else
+            v-else-if="readmeStatus === 'pending'"
             class="
               text-xs text-gray-500
               md:text-sm
@@ -101,6 +105,26 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
             "
           >
             正在加载 README...
+          </p>
+          <p
+            v-else-if="readmeError"
+            class="
+              text-xs text-red-500
+              md:text-sm
+              dark:text-red-400
+            "
+          >
+            README 加载失败，请稍后重试。
+          </p>
+          <p
+            v-else
+            class="
+              text-xs text-gray-500
+              md:text-sm
+              dark:text-gray-400
+            "
+          >
+            暂无 README 内容。
           </p>
         </UCard>
       </Motion>

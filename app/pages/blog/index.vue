@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 
-const { data: posts } = await useAsyncData('blog-posts', async () => {
+const {
+  data: posts,
+  status: postsStatus,
+  error: postsError,
+} = await useLazyAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog')
     .all()
 
@@ -46,13 +50,13 @@ const { data: posts } = await useAsyncData('blog-posts', async () => {
             to="/"
             icon="i-lucide-arrow-left"
           />
-          所有文章
         </Motion>
+        所有文章
       </h1>
     </header>
 
     <div
-      v-if="posts?.length"
+      v-if="postsStatus === 'success' && posts?.length"
       class="
         space-y-4
         md:space-y-6
@@ -66,6 +70,32 @@ const { data: posts } = await useAsyncData('blog-posts', async () => {
         variant="list"
       />
     </div>
+    <div
+      v-else-if="postsStatus === 'pending'"
+      class="
+        space-y-4
+        md:space-y-6
+      "
+    >
+      <div
+        v-for="i in 3"
+        :key="i"
+        class="
+          h-24 rounded-3xl border border-gray-200/20 bg-gray-100/60
+          animate-pulse
+          dark:border-gray-700/40 dark:bg-gray-800/40
+        "
+      />
+    </div>
+    <p
+      v-else-if="postsError"
+      class="
+        text-sm text-red-500
+        dark:text-red-400
+      "
+    >
+      文章加载失败，请稍后重试。
+    </p>
 
     <p
       v-else
