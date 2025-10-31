@@ -60,7 +60,7 @@ const closeMenu = () => {
           :while-hover="{ scale: 1.05 }"
           :while-tap="{ scale: 0.8 }"
           :while-press="{ scale: 0.95 }"
-          :transition="{ duration: 0.12 }"
+          :transition="{ duration: 0.08 }"
         >
           <UButton
             variant="ghost"
@@ -78,7 +78,7 @@ const closeMenu = () => {
           :while-hover="{ scale: 1.05 }"
           :while-tap="{ scale: 0.8 }"
           :while-press="{ scale: 0.95 }"
-          :transition="{ duration: 0.12 }"
+          :transition="{ duration: 0.08 }"
         >
           <NuxtLink
             to="/"
@@ -117,7 +117,7 @@ const closeMenu = () => {
             :while-hover="{ scale: 1.05 }"
             :while-tap="{ scale: 0.8 }"
             :while-press="{ scale: 0.95 }"
-            :transition="{ duration: 0.12 }"
+            :transition="{ duration: 0.08 }"
           >
             <UButton
               :to="link.to"
@@ -150,7 +150,7 @@ const closeMenu = () => {
               :while-hover="{ scale: 1.05 }"
               :while-tap="{ scale: 0.8 }"
               :while-press="{ scale: 0.95 }"
-              :transition="{ duration: 0.12 }"
+              :transition="{ duration: 0.08 }"
             >
               <UButton
                 :to="item.href"

@@ -51,7 +51,7 @@ const formatDate = (value?: string | Date | null) =>
         as-child
         :while-tap="{ scale: 0.9 }"
         :while-press="{ scale: 0.95 }"
-        :transition="{ duration: 0.12 }"
+        :transition="{ duration: 0.08 }"
       >
         <!-- Grid 样式 (首页) -->
         <UCard

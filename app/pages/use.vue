@@ -39,7 +39,7 @@ const { data: readme } = await useAsyncData('use-readme', async () => {
             :while-hover="{ scale: 1.05 }"
             :while-tap="{ scale: 0.8 }"
             :while-press="{ scale: 0.95 }"
-            :transition="{ duration: 0.12 }"
+            :transition="{ duration: 0.08 }"
           >
             <UButton
               variant="ghost"

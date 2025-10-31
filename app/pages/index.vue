@@ -76,7 +76,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
           :while-hover="{ scale: 1.05 }"
           :while-tap="{ scale: 0.8 }"
           :while-press="{ scale: 0.95 }"
-          :transition="{ duration: 0.12 }"
+          :transition="{ duration: 0.08 }"
         >
           <NuxtLink
             to="/blog"
@@ -96,7 +96,7 @@ const { data: posts } = await useAsyncData('recent-posts', async () => {
         v-if="posts?.length"
         :initial="{ opacity: 0, y: 10 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.12, delay: 0.2 }"
+        :transition="{ duration: 0.08, delay: 0.2 }"
         class="
           grid gap-4
           md:grid-cols-2 md:gap-6

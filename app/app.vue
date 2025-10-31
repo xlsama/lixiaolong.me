@@ -9,7 +9,7 @@ import { Motion } from 'motion-v'
       <Motion
         :initial="{ opacity: 0 }"
         :animate="{ opacity: 1 }"
-        :transition="{ duration: 0.12 }"
+        :transition="{ duration: 0.08 }"
         as-child
       >
         <AppHeader />

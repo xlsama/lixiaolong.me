@@ -36,7 +36,7 @@ const scrollToTop = () => {
         as-child
         :while-hover="{ scale: 1.1 }"
         :while-tap="{ scale: 0.9 }"
-        :transition="{ duration: 0.12 }"
+        :transition="{ duration: 0.08 }"
       >
         <UButton
           color="neutral"
