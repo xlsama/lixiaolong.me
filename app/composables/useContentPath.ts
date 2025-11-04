@@ -3,10 +3,9 @@
  * Nuxt Content 在处理外部仓库时，path 字段可能不正确，使用 stem 作为备用方案
  */
 export function useContentPath(
-  entry?: { path?: string | null, _path?: string | null, stem?: string | null } | null,
+  entry?: { path?: string | null; _path?: string | null; stem?: string | null } | null,
 ) {
-  if (!entry)
-    return ''
+  if (!entry) return ''
 
   const path = entry.path ?? entry._path ?? ''
 

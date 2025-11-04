@@ -25,13 +25,7 @@ const scrollToTop = () => {
     leave-from-class="translate-y-0 opacity-100"
     leave-to-class="translate-y-4 opacity-0"
   >
-    <div
-      v-if="isVisible"
-      class="
-        fixed right-4 bottom-8 z-40
-        sm:right-8
-      "
-    >
+    <div v-if="isVisible" class="fixed right-4 bottom-8 z-40 sm:right-8">
       <Motion
         as-child
         :while-hover="{ scale: 1.1 }"
@@ -45,9 +39,7 @@ const scrollToTop = () => {
           square
           icon="i-lucide-arrow-up"
           aria-label="回到顶部"
-          class="
-            flex items-center justify-center rounded-full text-center shadow-lg
-          "
+          class="flex items-center justify-center rounded-full text-center shadow-lg"
           @click="scrollToTop"
         />
       </Motion>

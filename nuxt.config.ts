@@ -27,6 +27,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   nitro: {
+    preset: 'netlify-edge',
     prerender: {
       // Crawl links starting from entry pages to discover dynamic routes
       crawlLinks: true,
@@ -38,11 +39,6 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-  },
-  eslint: {
-    config: {
-      stylistic: true,
-    },
   },
   fonts: {
     families: [{ name: 'Inter', weights: [400] }],

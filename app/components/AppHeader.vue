@@ -39,19 +39,9 @@ const closeMenu = () => {
 
 <template>
   <header
-    class="
-      sticky top-0 z-50 bg-white/80 shadow-sm backdrop-blur
-      supports-[backdrop-filter]:bg-white/70
-      dark:border-gray-800 dark:bg-black/60
-    "
+    class="sticky top-0 z-50 bg-white/80 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-gray-800 dark:bg-black/60"
   >
-    <div
-      class="
-        mx-auto flex h-16 max-w-7xl items-center justify-between px-4
-        sm:px-6
-        lg:px-8
-      "
-    >
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
       <!-- Left: Mobile menu button + Site title -->
       <div class="flex items-center gap-3">
         <!-- Mobile menu button -->
@@ -82,12 +72,7 @@ const closeMenu = () => {
         >
           <NuxtLink
             to="/"
-            class="
-              font-semibold tracking-wide text-gray-900
-              hover:text-gray-600
-              md:text-lg
-              dark:text-white dark:hover:text-gray-300
-            "
+            class="font-semibold tracking-wide text-gray-900 hover:text-gray-600 md:text-lg dark:text-white dark:hover:text-gray-300"
             aria-label="返回首页"
           >
             Li Xiaolong
@@ -96,20 +81,9 @@ const closeMenu = () => {
       </div>
 
       <!-- Right: Nav buttons + social icons -->
-      <div
-        class="
-          flex items-center gap-4
-          md:gap-5
-        "
-      >
+      <div class="flex items-center gap-4 md:gap-5">
         <!-- Navigation - hidden on mobile -->
-        <div
-          class="
-            hidden items-center gap-2
-            sm:flex
-            md:gap-4
-          "
-        >
+        <div class="hidden items-center gap-2 sm:flex md:gap-4">
           <Motion
             v-for="link in navLinks"
             :key="link.to"
@@ -123,10 +97,7 @@ const closeMenu = () => {
               :to="link.to"
               :variant="isActiveLink(link) ? 'solid' : 'ghost'"
               :color="isActiveLink(link) ? 'neutral' : 'neutral'"
-              class="
-                w-[3.5rem] justify-center text-base font-medium
-                sm:text-sm
-              "
+              class="w-[3.5rem] justify-center text-base font-medium sm:text-sm"
             >
               {{ link.label }}
             </UButton>
@@ -134,17 +105,8 @@ const closeMenu = () => {
         </div>
 
         <!-- Social icons -->
-        <div
-          class="
-            flex items-center gap-2
-            md:gap-4
-          "
-        >
-          <UTooltip
-            v-for="item in socialLinks"
-            :key="item.label"
-            :text="item.label"
-          >
+        <div class="flex items-center gap-2 md:gap-4">
+          <UTooltip v-for="item in socialLinks" :key="item.label" :text="item.label">
             <Motion
               as-child
               :while-hover="{ scale: 1.05 }"
