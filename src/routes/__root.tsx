@@ -1,6 +1,12 @@
 /// <reference types="vite/client" />
 import type { ReactNode } from 'react'
-import { Outlet, createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+  useRouterState,
+} from '@tanstack/react-router'
 import '../styles.css'
 
 export const Route = createRootRoute({
@@ -8,12 +14,6 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Xiaolong Li — Independent Developer' },
-      {
-        name: 'description',
-        content:
-          'Personal homepage of Xiaolong Li, an independent developer building software solo.',
-      },
     ],
     links: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   }),
@@ -29,8 +29,10 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const lang = pathname.startsWith('/zh') ? 'zh-CN' : 'en'
   return (
-    <html lang="zh-CN">
+    <html lang={lang}>
       <head>
         <HeadContent />
       </head>

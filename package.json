@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "tsgo && vp build",
+    "build": "vp build && tsgo",
     "preview": "vp preview",
     "check": "vp check --fix",
     "deploy": "pnpm build && wrangler deploy",
