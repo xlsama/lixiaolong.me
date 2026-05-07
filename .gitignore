@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# TanStack Router
+src/routeTree.gen.ts
+
+# Cloudflare
+.wrangler
+worker-configuration.d.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
