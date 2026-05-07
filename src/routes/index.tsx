@@ -84,7 +84,7 @@ const COPY: Record<
     qr_title: '小衣橱呀 · Closet',
     qr_sub: 'Open with WeChat',
     qr_close: 'Close',
-    page_title: 'Xiaolong Li — Independent Maker',
+    page_title: 'Xiaolong Li — Independent Developer',
   },
 }
 

@@ -8,8 +8,12 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: '李小龙 — 独立开发者' },
-      { name: 'description', content: '李小龙 · 独立开发者与投资者的个人主页。' },
+      { title: 'Xiaolong Li — Independent Developer' },
+      {
+        name: 'description',
+        content:
+          'Personal homepage of Xiaolong Li, an independent developer building software solo.',
+      },
     ],
     links: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   }),
