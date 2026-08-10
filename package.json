@@ -1,44 +1,34 @@
 {
   "name": "lixiaolong.me",
-  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "vp build && tsgo",
-    "preview": "vp preview",
-    "check": "vp check --fix",
+    "dev": "vite dev",
+    "build": "vite build && npm run typecheck",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
     "deploy": "pnpm build && wrangler deploy",
     "cf-typegen": "wrangler types",
-    "postinstall": "pnpm cf-typegen",
-    "prepare": "vp config"
+    "postinstall": "pnpm cf-typegen"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.169.2",
-    "@tanstack/react-start": "^1.167.65",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "@tanstack/react-router": "^1.170.25",
+    "@tanstack/react-start": "^1.168.42",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.36.0",
-    "@tailwindcss/vite": "^4.2.4",
-    "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@typescript/native-preview": "^7.0.0-dev.20260506.1",
-    "@vitejs/plugin-react": "^6.0.1",
-    "tailwindcss": "^4.2.4",
-    "typescript": "~6.0.3",
-    "vite": "^8.0.10",
-    "vite-plus": "^0.1.20",
-    "wrangler": "^4.88.0"
+    "@cloudflare/vite-plugin": "^1.51.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@typescript/native-preview": "^7.0.0-dev.20260707.2",
+    "@vitejs/plugin-react": "^6.0.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.1",
+    "wrangler": "^4.120.0"
   },
-  "packageManager": "pnpm@10.33.4",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "workerd"
-    ]
-  }
+  "packageManager": "pnpm@11.21.0"
 }
