@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Kept</title>
+  <!-- 与 App 图标同一套几何与配色（scripts/generate-appicon.swift）：
+       墨青渐变底 + 发光青波形收束成一个句点。矢量版供现代浏览器优先取用，
+       favicon.ico 里那三档是 icns 逐档渲染的位图兜底。 -->
+  <defs>
+    <linearGradient id="k-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123540"/>
+      <stop offset="1" stop-color="#091D24"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#k-bg)"/>
+  <g transform="translate(2.6 0) scale(0.918 1)">
+    <path d="M7 32 C10 16 15 16 18 32 C21 48 26 48 29 32 C31.5 20 35 20 37.5 32 C39.5 41 42 41 44 34.5 C45 31.5 47 31.2 48.5 32"
+          fill="none" stroke="#86EEF6" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55.5" cy="32" r="4" fill="#86EEF6"/>
+  </g>
+</svg>
