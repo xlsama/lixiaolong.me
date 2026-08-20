@@ -18,6 +18,8 @@ export default defineConfig({
         autoStaticPathsDiscovery: true,
       },
     }),
+    // React Compiler: plugin-react 的 compiler 选项还在 Unreleased（PR #1419），
+    // 发版后装上 oxc-transform-react 并把这里改成 viteReact({ compiler: true }) 即可
     viteReact(),
   ],
 });
