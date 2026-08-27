@@ -16,14 +16,14 @@ type IntroPart = { text: string; em: boolean }
 
 const PRODUCTS: Product[] = [
   {
-    id: 'kept',
-    name: { zh: 'Kept', en: 'Kept' },
+    id: 'meetkeep',
+    name: { zh: 'MeetKeep', en: 'MeetKeep' },
     desc: {
       zh: '录音、转写，并记下真正重要的内容。全部在你的 Mac 上完成，音频从不外传。',
       en: 'It records, transcribes, and writes down what matters. All on your Mac — the audio never leaves.',
     },
-    url: { zh: 'https://keptmac.com/zh', en: 'https://keptmac.com/' },
-    logo: '/kept.svg',
+    url: { zh: 'https://meetkeep.app/zh/', en: 'https://meetkeep.app/' },
+    logo: '/meetkeep.svg',
   },
 ]
 
