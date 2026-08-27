@@ -8,6 +8,7 @@ type Product = {
   id: string
   name: Localized
   desc: Localized
+  tagline: Localized
   url: Localized
   logo: string
 }
@@ -19,8 +20,12 @@ const PRODUCTS: Product[] = [
     id: 'meetkeep',
     name: { zh: 'MeetKeep', en: 'MeetKeep' },
     desc: {
-      zh: '录音、转写，并记下真正重要的内容。全部在你的 Mac 上完成，音频从不外传。',
-      en: 'It records, transcribes, and writes down what matters. All on your Mac — the audio never leaves.',
+      zh: 'Mac 本地 AI 会议纪要，没有机器人入会，音频从不外传。',
+      en: 'Local AI meeting notes for Mac. No bot joins the call, and the audio never leaves.',
+    },
+    tagline: {
+      zh: '下一场会，你只管开会。',
+      en: 'Your next meeting, just show up.',
     },
     url: { zh: 'https://meetkeep.app/zh/', en: 'https://meetkeep.app/' },
     logo: '/meetkeep.svg',
@@ -177,6 +182,13 @@ function ProductRow({ product, lang }: { product: Product; lang: Lang }) {
           </h3>
           <p className="m-0 max-w-135 text-pretty text-[13.5px] leading-[1.7] text-ink-2">
             {product.desc[lang]}
+          </p>
+          <p
+            className={`m-0 mt-2 text-[13px] leading-[1.7] text-ink-3 ${
+              isEn ? 'font-sans italic' : 'font-serif'
+            }`}
+          >
+            {product.tagline[lang]}
           </p>
         </div>
       </div>
